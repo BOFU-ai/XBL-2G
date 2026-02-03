@@ -1,0 +1,78 @@
+{
+  "topic_name": "早期高效，迈向治愈",
+  "topic_id": "QXD_TOPIC_20250720_001",
+  "topic_describe": "早期高效，迈向治愈",
+  "topic_mcc_code": "KES0049940-105510",
+  "home_page_url": "pages/page1/index.html",
+  "home_page_union_id": "QXD_PAGE_20250720_001.01.01",
+  "chapter_num": 3,
+  "pages_num": 1,
+  "chapter_info": [
+    {
+      "chapter_id": "QXD_CHAPTER_20250720_001.01",
+      "chapter_no": 1,
+      "chapter_title": "第一步：脊髓病灶",
+      "chapter_subtitle": "脊髓病变是需要重点关注的关键预后因素",
+      "chapter_pages_num": 1,
+      "chapter_page_home_page_url": "pages/page1/index.html",
+      "chapter_page_union_id": "QXD_PAGE_20250720_001.01.01",
+      "pages_info": [{
+        "page_union_id": "QXD_PAGE_20250720_001.01.01",
+        "page_no": 1,
+        "page_name": "关注脊髓病灶，优化NEDA-3评估",
+        "page_describe": "关注脊髓病灶，优化NEDA-3评估",
+        "page_path": "pages\\page1\\index.html",
+        "page_url": "pages/page1/index.html",
+        "page_mcc_code": "",
+        "page_chapter_number": 1,
+        "page_chapter_title": "第一步：脊髓病灶",
+        "page_chapter_subtitle": "脊髓病变是需要重点关注的关键预后因素",
+        "page_key_message": "关注脊髓病灶，优化NEDA-3评估"
+      }]
+    },
+    {
+      "chapter_id": "QXD_CHAPTER_20250720_001.02",
+      "chapter_no": 2,
+      "chapter_title": "第二步：治愈优选",
+      "chapter_subtitle": "全欣达®高效兼安，助力MS迈向治愈第一步",
+      "chapter_pages_num": 1,
+      "chapter_page_home_page_url": "pages/page2/index.html",
+      "chapter_page_union_id": "QXD_PAGE_20250720_001.02.01",
+      "pages_info": [{
+        "page_union_id": "QXD_PAGE_20250720_001.02.01",
+        "page_no": 1,
+        "page_name": "全欣达®高效达标，安全便捷，有利于MS实现临床治愈",
+        "page_describe": "全欣达®高效达标，安全便捷，有利于MS实现临床治愈",
+        "page_path": "pages\\page2\\index.html",
+        "page_url": "pages/page2/index.html",
+        "page_mcc_code": "",
+        "page_chapter_number": 2,
+        "page_chapter_title": "第二步：治愈优选",
+        "page_chapter_subtitle": "全欣达®高效兼安，助力MS迈向治愈第一步",
+        "page_key_message": "全欣达®高效达标，安全便捷，有利于MS实现临床治愈"
+      }]
+    },
+    {
+      "chapter_id": "QXD_CHAPTER_20250720_001.03",
+      "chapter_no": 3,
+      "chapter_title": "第三步：MRI规范",
+      "chapter_subtitle": "规范化MRI有助于早期诊断、优化疾病管理",
+      "chapter_pages_num": 1,
+      "chapter_page_home_page_url": "pages/page3/index.html",
+      "chapter_page_union_id": "QXD_PAGE_20250720_001.03.01",
+      "pages_info": [{
+        "page_union_id": "QXD_PAGE_20250720_001.03.01",
+        "page_no": 1,
+        "page_name": "MRI规范应用，助力MS临床诊疗",
+        "page_describe": "MRI规范应用，助力MS临床诊疗",
+        "page_path": "pages\\page3\\index.html",
+        "page_url": "pages/page3/index.html",
+        "page_mcc_code": "",
+        "page_chapter_number": 3,
+        "page_chapter_title": "第三步：MRI规范",
+        "page_chapter_subtitle": "规范化MRI有助于早期诊断、优化疾病管理",
+        "page_key_message": "MRI规范应用，助力MS临床诊疗"
+      }]
+    }
+  ]
+}
