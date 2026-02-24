@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ELN 2025、CSCO 2025推荐：低/中危、年轻患者、计划妊娠患者有望追求TFR</title>
-    <!-- 核心优化：补全视口配置，适配所有手机 -->
+    <!-- 对齐正常页面：恢复viewport-fit=cover，保持配置一致 -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <meta name="TopicID" content="XBL-2G_TOPIC_20260204_001">
     <meta name="ChapterID" content="XBL-2G_CHAPTER_20260204_001.03">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../css/animate.css">
 
     <style>
-        /* 核心修改：统一rem基准 + 初始化样式，解决显示不全 */
+        /* 完全对齐正常页面：统一rem基准 + 初始化样式 */
         html {
             font-size: 100px; /* 1rem=100px，适配750设计稿 */
             width: 100%;
@@ -24,7 +24,7 @@
             padding: 0;
             overflow-x: hidden; /* 禁止横向滚动 */
         }
-        /* 适配手机端rem换算，确保不同手机尺寸一致 */
+        /* 适配手机端rem换算，确保和正常页面一致 */
         @media screen and (max-width: 750px) {
             html {
                 font-size: calc(100vw / 7.5);
@@ -37,7 +37,7 @@
             padding: 0; /* 移除默认内边距 */
             overscroll-behavior: contain; /* 阻止边界弹性滚动 */
             -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
-            position: relative; /* 作为fixed/absolute元素的参考 */
+            position: relative; /* 作为fixed元素参考 */
         }
         a{
             font-size: 0.25rem;
@@ -45,20 +45,19 @@
             font-style: normal;
             text-decoration: none;
             font-family: 微软雅黑;
-            display: inline-block;
         }
-        /* 核心修改：主容器强制铺满屏幕，内容自适应 */
+        /* 主容器：完全对齐正常页面，强制铺满屏幕 */
         .bd {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* 禁止容器内无效滚动 */
+            overflow: hidden; /* 禁止容器内滚动 */
             position: relative;
         }
-        /* 核心修改：图片完整适配屏幕，无裁剪、无溢出 */
+        /* 核心修复：恢复正常页面的图片样式，消除黑边 */
         .bd img{
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 完整显示图片，适配屏幕 */
+            object-fit: contain; /* 完整显示图片，无裁剪 */
             display: block; /* 移除图片下方空白 */
         }
         .active ul{
@@ -69,6 +68,7 @@
         .active ul>li{
             width: 12.5%;
         }
+        /* 提示框样式：完全对齐正常页面 */
         .tip{
             position: fixed;
             bottom: -0.5rem;
@@ -92,7 +92,6 @@
             bottom: 0rem;
             opacity: 0.8;
         }
-        /* 核心修改：主盒子铺满屏幕 */
         #box{
             position: relative;
             font-size: 0px;
@@ -109,7 +108,7 @@
             font-size: 12px;
             text-align: center;
             font-weight: 400;
-            display: none; /* 隐藏非核心元素，避免占空间 */
+            display: none; /* 非核心元素隐藏，避免占空间 */
         }
     </style>
     <script src="../../js/jquery-2.1.0.js"></script>
@@ -122,7 +121,7 @@
  <div class="bd" id="box">
     <img src="images/1.png?id=1" alt="">
  </div>
- <!-- 恢复提示框，确保滑动提示正常显示（如需隐藏可注释，但保留DOM避免JS报错） -->
+ <!-- 恢复提示框，确保和正常页面结构一致 -->
  <!-- <div class="tip">上滑跳转下一页</div> -->
 
 <script>
@@ -158,11 +157,11 @@
         tip.classList.remove('show');
     }
 
-    // 优化：适配全屏容器的底部判断逻辑
+    // 完全对齐正常页面：精准的“是否滑到底部”判断
     function isPageBottom() {
-        // 容器已全屏，直接返回true（若图片高度超视口，可保留原逻辑）
+        // 因为容器是100%视口高度，直接返回true（始终处于底部）
         return true;
-        /* 原逻辑（如需兼容超长图片可启用）：
+        /* 若图片高度超过视口，可启用原逻辑：
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
         const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -190,13 +189,14 @@
             const endY = e.changedTouches[0].pageY;
             const deltaY = startY - endY;
 
-            // 核心逻辑保留：滑到底部+上滑超过15px则跳转
-            if (isPageBottom() && deltaY > 15) {
+            // 核心逻辑：只有上滑超过15px才跳转（已处于全屏底部）
+            if (deltaY > 15) {
                 hideTip();
                 setTimeout(() => {
                     window.location.href = "../page3/index2.html";
                 }, 50);
             } else {
+                // 下滑/滑动距离不足，隐藏提示框
                 if (deltaY < -10) {
                     hideTip();
                 }
@@ -215,7 +215,7 @@
         }, { passive: true });
     }
 
-    // 页面加载完成后执行，确保DOM渲染完毕且初始显示完整
+    // 完全对齐正常页面：仅保留基础加载逻辑，移除多余的适配函数
     window.addEventListener('load', function() {
         // 强制滚动到顶部，确保初始显示完整
         window.scrollTo(0, 0);
