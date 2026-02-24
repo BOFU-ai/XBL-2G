@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>信倍立（阿思尼布）更快更高达到最佳治疗反应，减少疾病进展；守护所有患者，包括高风险人群，改善预后</title>
+    <title>信倍立（阿思尼布）更快更高达到最佳治疗反应，EFS更优，减少疾病进展；守护所有患者，包括高风险人群，改善预后</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
-    <meta name="TopicID" content="XBL_TOPIC_20260204_001">
-    <meta name="ChapterID" content="XBL_CHAPTER_20260204_001.05">
-    <meta name="PageID" content="XBL_PAGE_20260204_001.05.02">
+    <meta name="TopicID" content="XBL-2G_TOPIC_20260204_001">
+    <meta name="ChapterID" content="XBL-2G_CHAPTER_20260204_001.05">
+    <meta name="PageID" content="XBL-2G_PAGE_20260204_001.05.02">
     <meta name="mcc_code" content="">
-    <meta name="key_message" content="信倍立（阿思尼布）更快更高达到最佳治疗反应，减少疾病进展；守护所有患者，包括高风险人群，改善预后">
+    <meta name="key_message" content="信倍立（阿思尼布）更快更高达到最佳治疗反应，EFS更优，减少疾病进展；守护所有患者，包括高风险人群，改善预后">
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/toast.css">
     <link rel="stylesheet" href="../../css/animate.css">
@@ -17,8 +17,8 @@
         html,body{
             width: 100%;
             height: 100%;
-            overscroll-behavior: contain; /* 阻止边界弹性滚动 */
-            -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
         }
         a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
         .bd img{width: 100%;}
@@ -47,7 +47,6 @@
             opacity: 0;
             z-index: 9998;
         }
-        /* 显示时的样式 */
         .show {
             bottom: 0rem;
             opacity: 0.8;
@@ -57,26 +56,25 @@
             font-size: 0px;
         }
         
-        /* 手指按钮样式 - 仅修改z-index，保留所有原有样式 */
         .bd .click-area {
-    position: absolute;
-    width: 0.6rem;    /* 复用目标代码：固定宽度0.6rem */
-    height: 0.6rem;   /* 复用目标代码：固定高度0.6rem */
-    cursor: pointer;
-    z-index: 10; /* 关键修改：从99→10，确保被弹窗覆盖 */
-    /* 显示jia.png，居中无拉伸，路径用你的../../images/jia.png */
-    background: url("../../images/jia.png") no-repeat center center !important;
-    background-size: 100% 100% !important; /* 图片完全填充容器，无变形，匹配目标显示效果 */
-    -webkit-tap-highlight-color: transparent;
-    pointer-events: auto;
-    touch-action: manipulation;
-    user-select: none;
-    display: block;
-}
+            position: absolute;
+            width: 0.6rem;    
+            height: 0.6rem;   
+            cursor: pointer;
+            z-index: 10; 
+            background: url("../../images/jia.png") no-repeat center center !important;
+            background-size: 100% 100% !important; 
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
+            display: block;
+        }
         .bd .j1{right:4rem;top:6.55rem}
         .bd .j2{right:0.65rem;top:6.55rem}
         .bd .j3{right:4rem;top:8.6rem}
         .bd .j4{right:0.65rem;top:8.6rem}
+        .bd .j5{right:4rem;top:11.5rem}
 
         .pull-left{height: 7rem;position: absolute;right:0.8rem;top:4rem}
         .my-gallery {width:10%;margin: 0 auto;opacity:0;position: absolute;top:4rem;right:0.8rem}
@@ -84,7 +82,6 @@
         .my-gallery .img-dv a {display:block;width:100%;text-align: center}
         .my-gallery .img-dv a img {width:100%;}
 
-        /* 闪烁动画 - 保留原版，确保正常闪烁 */
         .blinking-icon {
             animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
@@ -106,64 +103,60 @@
             text-align: center;
             font-weight: 400;
         }
-        /* 弹窗层级样式 - 统一层级，确保置顶（仅优化数值，保留逻辑） */
-        .image-modal-overlay,
-.modal-overlay,
-.img-modal-mask {
-    z-index: 999999 !important; /* 统一提升到999999，避免层级冲突 */
-    pointer-events: auto !important;
-    background: rgba(0,0,0,0.7) !important;
-}
-.image-modal-overlay, .image-modal-mask, .modal-overlay, .modal-mask {
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-.image-modal-content, .image-modal-box, .modal-content, .modal-box {
-    z-index: 9999999 !important;
-    pointer-events: auto !important;
-}
-.image-modal-close, .modal-close, .img-close, .close-btn {
-    z-index: 99999999 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
 
-        /********************* 返回按钮样式 - 完全修改为显示back.png *********************/
+        .image-modal-overlay,
+        .modal-overlay,
+        .img-modal-mask {
+            z-index: 999999 !important; 
+            pointer-events: auto !important;
+            background: rgba(0,0,0,0.7) !important;
+        }
+        .image-modal-overlay, .image-modal-mask, .modal-overlay, .modal-mask {
+            z-index: 999999 !important;
+            pointer-events: auto !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .image-modal-content, .image-modal-box, .modal-content, .modal-box {
+            z-index: 9999999 !important;
+            pointer-events: auto !important;
+        }
+        .image-modal-close, .modal-close, .img-close, .close-btn {
+            z-index: 99999999 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+
         .back-btn {
             position: fixed; 
             bottom: 0.5rem;  
             right: 0.3rem;   
             width: 0.8rem;   
             height: 0.8rem;
-            background: none !important; /* 去掉白色底色 */
-            border-radius: 0 !important; /* 去掉圆角 */
-            box-shadow: none !important; /* 去掉阴影 */
+            background: none !important; 
+            border-radius: 0 !important; 
+            box-shadow: none !important; 
             z-index: 9997;
             cursor: pointer;
             display: block !important;
         }
-/* 隐藏文字 */
-.back-btn .back-text {
-    display: none !important;
-}
-/* 显示back.png，100%填充按钮，取消定位偏移 */
-.back-btn img {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    position: static !important; /* 取消绝对定位 */
-    transform: none !important; /* 取消位移 */
-    z-index: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
+        .back-btn .back-text {
+            display: none !important;
+        }
+        .back-btn img {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+            position: static !important; 
+            transform: none !important; 
+            z-index: inherit !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
 
-        /* 冗余动画定义删除（避免冲突），保留原版闪烁动画即可 */
         .ft_tips {
             position: absolute;
             bottom: -50px;
@@ -174,58 +167,118 @@
             text-align: center;
             font-weight: 400;
         }
+
+        /* 最终版：弹窗样式（关闭按钮在图片内部右上角，尺寸缩小） */
+        #custom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 图片容器：相对定位，让关闭按钮基于图片定位 */
+        #custom-modal .img-wrap {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        #custom-modal .img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* 核心：关闭按钮在图片内部右上角，尺寸0.5rem（匹配原始大小） */
+        #custom-modal .close-btn {
+            position: absolute;
+            top: 0.2rem;      /* 图片内上边距 */
+            right: 0.2rem;    /* 图片内右边距 */
+            width: 0.3rem;    /* 缩小尺寸，匹配原始代码 */
+            height: 0.3rem;   /* 缩小尺寸，匹配原始代码 */
+            background: url("../../images/close.png") no-repeat center center !important;
+            background-size: 100% 100% !important;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            color: transparent;
+            z-index: 100000000;
+        }
     </style>
     <script src="../../js/jquery-2.1.0.js"></script>
     <script src="../../js/public.js?id=1"></script>
     <script src="../../js/toast.js"></script>
-    <script src="../../js/image-modal.js?id=2"></script>
+    <!-- 注释掉有问题的ImageModal插件 -->
+    <!-- <script src="../../js/image-modal.js?id=2"></script> -->
     <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
 </head>
 <body>
  <div class="bd" id="box">
     <img src="images/2.png?id=1" alt="">
-    <!-- 可点击区域 - 保留所有原有属性，确保点击正常 -->
+    <!-- 可点击区域 -->
     <div class="click-area j1 blinking-icon" data-src="images/jia1.png"></div>
     <div class="click-area j2 blinking-icon" data-src="images/jia2.png"></div>
     <div class="click-area j3 blinking-icon" data-src="images/jia3.png"></div>
     <div class="click-area j4 blinking-icon" data-src="images/jia4.png"></div>
+    <div class="click-area j5 blinking-icon" data-src="images/jia5.png"></div>
  
-    <!-- 返回按钮 - 修改图片路径为back.png -->
+    <!-- 返回按钮 -->
     <div class="back-btn" id="backBtn">
         <span class="back-text">返回<br>疾病</span>
-        <img src="../../images/back.png" alt=""> <!-- 改为你的圆形back.png -->
+        <img src="../../images/back.png" alt="">
+    </div>
+
+    <!-- 弹窗DOM：关闭按钮嵌套在图片容器内 -->
+    <div id="custom-modal">
+        <div class="img-wrap">
+            <div class="close-btn"></div>
+            <img id="modal-img" src="" alt="">
+        </div>
     </div>
 
 <script>
-    // 全局配置
-    const enableSwipeDownJump = true;  
-    const enableSwipeUpJump = true;    
+$(document).ready(function() {
+    var $modal = $('#custom-modal');
+    var $modalImg = $('#modal-img');
+    var $closeBtn = $('.close-btn');
 
-    // 图片弹窗初始化 - 保留原有配置
-    const modal = new ImageModal({
-    backdropBlur: false,
-    closeOnEscape: false,
-    backdropOpacity: 0.5
+    // 点击区域触发弹窗（无冲突、不自动关闭）
+    $('.click-area').on('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var imgSrc = $(this).data('src');
+        $modalImg.attr('src', imgSrc);
+        $modal.css('display', 'flex');
     });
-    // 可点击区域事件 - 保留原有逻辑，确保j1-j4点击正常
-    $('.click-area').on('click touchstart', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const popImgSrc = $(this).data('src');
-    
-    if (popImgSrc) {
-        const checkImg = new Image();
-        checkImg.src = popImgSrc;
-        checkImg.onerror = () => console.error('弹窗图片路径错误：', popImgSrc);
-        modal.open(popImgSrc);
-        return;
-    }
-});
 
-    // 返回按钮事件 - 保留原有跳转逻辑
-    $('#backBtn').click(function() {
+    // 关闭按钮触发关闭（位置在图片内）
+    $closeBtn.on('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $modal.css('display', 'none');
+        $modalImg.attr('src', '');
+    });
+
+    // 点击遮罩层关闭弹窗
+    $modal.on('touchstart', function(e) {
+        if (e.target === this) {
+            $modal.css('display', 'none');
+            $modalImg.attr('src', '');
+        }
+    });
+
+    // 返回按钮逻辑
+    $('#backBtn').on('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = "../page1/index.html";
     });
+});
 </script>
 
 </body>
