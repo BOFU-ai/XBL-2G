@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>信倍立（阿思尼布）更快更高达到最佳治疗反应，EFS更优，减少疾病进展；守护所有患者，包括高风险人群，改善预后</title>
-    <!-- 核心优化：补全视口配置，适配所有手机（含刘海屏/挖孔屏） -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <meta name="TopicID" content="XBL-2G_TOPIC_20260204_001">
     <meta name="ChapterID" content="XBL-2G_CHAPTER_20260204_001.05">
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="../../css/animate.css">
 
     <style>
-        /* 核心修改：统一rem基准 + 初始化样式，解决显示不全 */
         html {
             font-size: 100px; /* 1rem=100px，适配750设计稿 */
             width: 100%;
@@ -40,57 +38,34 @@
             position: relative; /* 作为fixed/absolute元素的参考 */
         }
         a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
-        /* 核心修改：主容器强制铺满屏幕，内容自适应 */
+        
+        /* 核心：背景图容器作为唯一定位基准（参考模板） */
         .bd {
             width: 100%;
             height: 100%;
             overflow: hidden; /* 禁止容器内无效滚动 */
             position: relative;
         }
-        /* 核心修改：图片完整适配屏幕，无裁剪、无溢出 */
-        .bd img{
+        #box{
+            width: 100%;
+            height: 100%;
+            position: relative; /* 所有子元素的定位基准 */
+            font-size: 0px;
+            overflow: hidden; /* 确保容器不超出可视区 */
+        }
+        /* 背景图完整适配屏幕，无裁剪、无溢出 */
+        #box img{
             width: 100%;
             height: 100%;
             object-fit: contain; /* 完整显示图片，适配屏幕 */
             display: block; /* 移除图片下方空白 */
         }
-        .active ul{
-            display: flex;
-            justify-content: space-around;
-            margin-top: 0.71rem;
-        }
-        .active ul>li{
-            width: 12.5%;
-        }
-        .tip{
-            position: fixed;
-            bottom: -0.5rem;
-            padding: 0.1rem 0rem;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            transition: all 0.3s;
-            width: 100%;
-            height: 0.8rem;
-            line-height: 0.4rem;
-            font-size: 0.25rem;
-            text-align: center;
-            background: white;
-            color:#333;
-            opacity: 0;
-            z-index: 9998;
-        }
-        .show {
-            bottom: 0rem;
-            opacity: 0.8;
-        }
-        /* 核心修改：主盒子铺满屏幕 */
-        #box{
-            position: relative;
-            font-size: 0px;
-            width: 100%;
-            height: 100%;
-        }
-        
+
+        /* 冗余样式清理（参考模板） */
+        .active ul{display: none;}
+        .pull-left, .my-gallery, .ft_tips {display: none;}
+
+        /* 核心：j1-j5 基于 #box 百分比定位（参考模板） */
         .bd .click-area {
             position: absolute;
             width: 0.6rem;    
@@ -104,22 +79,17 @@
             touch-action: manipulation;
             user-select: none;
             display: block;
-        }
-        .bd .j1{right:4rem;top:6.55rem}
-        .bd .j2{right:0.65rem;top:6.55rem}
-        .bd .j3{right:4rem;top:8.6rem}
-        .bd .j4{right:0.65rem;top:8.6rem}
-        .bd .j5{right:4rem;top:11.5rem}
-
-        .pull-left{height: 7rem;position: absolute;right:0.8rem;top:4rem}
-        .my-gallery {width:10%;margin: 0 auto;opacity:0;position: absolute;top:4rem;right:0.8rem}
-        .my-gallery .img-dv {width:100%;margin-bottom: 1%;}
-        .my-gallery .img-dv a {display:block;width:100%;text-align: center}
-        .my-gallery .img-dv a img {width:100%;}
-
-        .blinking-icon {
+            /* 统一闪烁动画（参考模板） */
             animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
+        /* 关键修改：j1-j5 百分比定位（适配2.png，替换原rem） */
+        .bd .j1{right: 55%; top: 48%;}   /* 替换原4rem/6.55rem */
+        .bd .j2{right: 9%; top: 48%;}    /* 替换原0.65rem/6.55rem */
+        .bd .j3{right: 55%; top: 63%;}   /* 替换原4rem/8.6rem */
+        .bd .j4{right: 9%; top: 63%;}    /* 替换原0.65rem/8.6rem */
+        .bd .j5{right: 55%; top: 83.5%;}   /* 替换原4rem/11.5rem */
+
+        /* 统一闪烁动画（参考模板） */
         @keyframes heartbeat {
             0% { transform: scale(1); }
             14% { transform: scale(1.2); }
@@ -128,18 +98,7 @@
             70% { transform: scale(1); }
         }
 
-        .ft_tips {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #666;
-            font-size: 12px;
-            text-align: center;
-            font-weight: 400;
-            display: none; /* 隐藏非核心元素，避免占空间 */
-        }
-
+        /* 保留你的弹窗层级样式（兼容） */
         .image-modal-overlay,
         .modal-overlay,
         .img-modal-mask {
@@ -166,10 +125,11 @@
             cursor: pointer !important;
         }
 
+        /* 核心修改：返回按钮百分比定位 + 闪烁动画（参考模板） */
         .back-btn {
-            position: fixed; 
-            bottom: 0.5rem;  
-            right: 0.3rem;   
+            position: absolute; /* 替换fixed，基于背景图容器 */
+            bottom: 5%;         /* 替换原0.5rem → 百分比适配 */
+            right: 5%;          /* 替换原0.3rem → 百分比适配 */
             width: 0.8rem;   
             height: 0.8rem;
             background: none !important; 
@@ -178,6 +138,8 @@
             z-index: 9997;
             cursor: pointer;
             display: block !important;
+            /* 新增：返回按钮闪烁动画 */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
         .back-btn .back-text {
             display: none !important;
@@ -193,7 +155,7 @@
             padding: 0 !important;
         }
 
-        /* 最终版：弹窗样式（关闭按钮在图片内部右上角，尺寸缩小） */
+        /* 保留你的原生弹窗样式 */
         #custom-modal {
             position: fixed;
             top: 0;
@@ -206,7 +168,6 @@
             justify-content: center;
             align-items: center;
         }
-        /* 图片容器：相对定位，让关闭按钮基于图片定位 */
         #custom-modal .img-wrap {
             max-width: 90%;
             max-height: 90%;
@@ -217,7 +178,6 @@
             height: auto;
             display: block;
         }
-        /* 核心：关闭按钮在图片内部右上角，尺寸0.5rem（匹配原始大小） */
         #custom-modal .close-btn {
             position: absolute;
             top: 0.2rem;      /* 图片内上边距 */
@@ -238,77 +198,135 @@
     <script src="../../js/jquery-2.1.0.js"></script>
     <script src="../../js/public.js?id=1"></script>
     <script src="../../js/toast.js"></script>
-    <!-- 注释掉有问题的ImageModal插件 -->
-    <!-- <script src="../../js/image-modal.js?id=2"></script> -->
     <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
 </head>
 <body>
- <div class="bd" id="box">
-    <img src="images/2.png?id=1" alt="">
-    <!-- 可点击区域 -->
-    <div class="click-area j1 blinking-icon" data-src="images/jia1.png"></div>
-    <div class="click-area j2 blinking-icon" data-src="images/jia2.png"></div>
-    <div class="click-area j3 blinking-icon" data-src="images/jia3.png"></div>
-    <div class="click-area j4 blinking-icon" data-src="images/jia4.png"></div>
-    <div class="click-area j5 blinking-icon" data-src="images/jia5.png"></div>
- 
-    <!-- 返回按钮 -->
-    <div class="back-btn" id="backBtn">
-        <span class="back-text">返回<br>疾病</span>
-        <img src="../../images/back.png" alt="">
-    </div>
+ <div class="bd">
+    <div id="box">
+        <img src="images/2.png?id=1" alt="" class="bg-main">
+        <!-- j1-j5：百分比定位 -->
+        <div class="click-area j1" data-src="images/jia1.png"></div>
+        <div class="click-area j2" data-src="images/jia2.png"></div>
+        <div class="click-area j3" data-src="images/jia3.png"></div>
+        <div class="click-area j4" data-src="images/jia4.png"></div>
+        <div class="click-area j5" data-src="images/jia5.png"></div>
+     
+        <!-- 返回按钮：百分比定位 + 闪烁 -->
+        <div class="back-btn" id="backBtn">
+            <span class="back-text">返回<br>疾病</span>
+            <img src="../../images/back.png" alt="">
+        </div>
 
-    <!-- 弹窗DOM：关闭按钮嵌套在图片容器内 -->
-    <div id="custom-modal">
-        <div class="img-wrap">
-            <div class="close-btn"></div>
-            <img id="modal-img" src="" alt="">
+        <!-- 保留原生弹窗DOM -->
+        <div id="custom-modal">
+            <div class="img-wrap">
+                <div class="close-btn"></div>
+                <img id="modal-img" src="" alt="">
+            </div>
         </div>
     </div>
+ </div>
 
 <script>
-// 页面加载后强制滚动到顶部，确保初始显示完整
-window.addEventListener('load', function() {
-    window.scrollTo(0, 0);
-});
-
-$(document).ready(function() {
-    var $modal = $('#custom-modal');
-    var $modalImg = $('#modal-img');
-    var $closeBtn = $('.close-btn');
-
-    // 点击区域触发弹窗（无冲突、不自动关闭）
-    $('.click-area').on('touchstart', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var imgSrc = $(this).data('src');
-        $modalImg.attr('src', imgSrc);
-        $modal.css('display', 'flex');
+    // 页面加载后初始化（参考模板）
+    window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+        enableSwipeJump(); // 绑定下滑跳转逻辑
     });
 
-    // 关闭按钮触发关闭（位置在图片内）
-    $closeBtn.on('touchstart', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $modal.css('display', 'none');
-        $modalImg.attr('src', '');
-    });
+    // 全局变量（参考模板）
+    let touchLock = false; 
+    let startY = 0;       
+    let isTouching = false;
+    const tip = document.querySelector('.tip');
+    // 路径配置：下滑跳转（你可自行修改目标地址）
+    const prevPageUrl = "../page5/index.html";  // 可替换为你需要的地址，比如 pages/pageX/index.html
+    const homePageUrl = "../page1/index.html"; // 返回按钮跳首页
 
-    // 点击遮罩层关闭弹窗
-    $modal.on('touchstart', function(e) {
-        if (e.target === this) {
+    // 提示框显示/隐藏（参考模板）
+    function showTip() {if (tip) tip.classList.add('show');}
+    function hideTip() {if (tip) tip.classList.remove('show');}
+
+    // 新增：下滑跳转逻辑（完全参考模板）
+    function enableSwipeJump() {
+        document.addEventListener('touchstart', (e) => {
+            if (touchLock) return;
+            startY = e.touches[0].pageY;
+            isTouching = true;
+            showTip();
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            if (!isTouching || touchLock) {
+                isTouching = false;
+                return;
+            }
+            touchLock = true;
+
+            const endY = e.changedTouches[0].pageY;
+            const deltaY = startY - endY;
+
+            if (deltaY > 15) {
+                hideTip();
+            } else if (deltaY < -10) { // 下滑触发跳转
+                hideTip();
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if (scrollTop <= 50) {
+                    window.location.href = prevPageUrl;  
+                }
+            }
+
+            setTimeout(() => {
+                touchLock = false;
+                isTouching = false;
+            }, 100);
+        }, { passive: true });
+
+        document.addEventListener('touchcancel', () => {
+            isTouching = false;
+            touchLock = false;
+            hideTip();
+        }, { passive: true });
+    }
+
+    // 保留原有弹窗+返回按钮逻辑
+    $(document).ready(function() {
+        var $modal = $('#custom-modal');
+        var $modalImg = $('#modal-img');
+        var $closeBtn = $('.close-btn');
+
+        // j1-j5点击弹窗
+        $('.click-area').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var imgSrc = $(this).data('src');
+            $modalImg.attr('src', imgSrc);
+            $modal.css('display', 'flex');
+        });
+
+        // 关闭按钮触发关闭
+        $closeBtn.on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             $modal.css('display', 'none');
             $modalImg.attr('src', '');
-        }
-    });
+        });
 
-    // 返回按钮逻辑
-    $('#backBtn').on('touchstart', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.location.href = "../page1/index.html";
+        // 点击遮罩层关闭弹窗
+        $modal.on('touchstart', function(e) {
+            if (e.target === this) {
+                $modal.css('display', 'none');
+                $modalImg.attr('src', '');
+            }
+        });
+
+        // 返回按钮跳首页
+        $('#backBtn').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = homePageUrl;
+        });
     });
-});
 </script>
 
 </body>
