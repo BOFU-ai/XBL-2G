@@ -94,20 +94,20 @@
         
         /* 手指按钮样式 - 保留所有原有样式，无修改 */
         .bd .click-area {
-    position: absolute;
-    width: 0.6rem;    /* 复用目标代码：固定宽度0.6rem */
-    height: 0.6rem;   /* 复用目标代码：固定高度0.6rem */
-    cursor: pointer;
-    z-index: 99;
-    /* 显示jia.png，居中无拉伸，路径用你的../../images/jia.png */
-    background: url("../../images/jia.png") no-repeat center center !important;
-    background-size: 100% 100% !important; /* 图片完全填充容器，无变形，匹配目标显示效果 */
-    -webkit-tap-highlight-color: transparent;
-    pointer-events: auto;
-    touch-action: manipulation;
-    user-select: none;
-    display: block;
-}
+            position: absolute;
+            width: 0.6rem;    /* 复用目标代码：固定宽度0.6rem */
+            height: 0.6rem;   /* 复用目标代码：固定高度0.6rem */
+            cursor: pointer;
+            z-index: 99;
+            /* 显示jia.png，居中无拉伸，路径用你的../../images/jia.png */
+            background: url("../../images/jia.png") no-repeat center center !important;
+            background-size: 100% 100% !important; /* 图片完全填充容器，无变形，匹配目标显示效果 */
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
+            display: block;
+        }
         
 
         .pull-left{height: 7rem;position: absolute;right:0.8rem;top:4rem}
@@ -166,7 +166,7 @@
     cursor: pointer !important;
 }
 
-        /********************* 返回按钮样式 - 仅修改这部分 *********************/
+        /********************* 返回按钮样式 - 仅新增闪烁动画 *********************/
         .back-btn {
             position: fixed; 
             bottom: 0.5rem;  
@@ -179,6 +179,8 @@
             z-index: 9997;
             cursor: pointer;
             display: block !important;
+            /* 新增：返回按钮闪烁动画（和click-area一致） */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
 /* 隐藏文字 */
 .back-btn .back-text {
