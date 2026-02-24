@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>ASC4FIRST研究证实信倍立（阿思尼布）较传统TKIs：双倍深度缓解；减半AE停药；双倍提升QoL</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
-    <meta name="TopicID" content="XBL_TOPIC_20260204_001">
-    <meta name="ChapterID" content="XBL_CHAPTER_20260204_001.02">
-    <meta name="PageID" content="XBL_PAGE_20260204_001.02.02">
+    <meta name="TopicID" content="XBL-2G_TOPIC_20260204_001">
+    <meta name="ChapterID" content="XBL-2G_CHAPTER_20260204_001.02">
+    <meta name="PageID" content="XBL-2G_PAGE_20260204_001.02.02">
     <meta name="mcc_code" content="">
     <meta name="key_message" content="ASC4FIRST研究证实信倍立（阿思尼布）较传统TKIs：双倍深度缓解；减半AE停药；双倍提升QoL">
     <link rel="stylesheet" href="../../css/reset.css">
@@ -57,22 +57,22 @@
             font-size: 0px;
         }
         
-        /* 手指按钮样式 - 【仅修改这里：z-index从99降到10】 */
+        /* 手指按钮样式 - 完全保留你的原始样式（仅z-index已改为10） */
         .bd .click-area {
-    position: absolute;
-    width: 0.6rem;    /* 复用目标代码：固定宽度0.6rem */
-    height: 0.6rem;   /* 复用目标代码：固定高度0.6rem */
-    cursor: pointer;
-    z-index: 10; /* 关键修改：从99→10，确保被弹窗覆盖 */
-    /* 显示jia.png，居中无拉伸，路径用你的../../images/jia.png */
-    background: url("../../images/jia.png") no-repeat center center !important;
-    background-size: 100% 100% !important; /* 图片完全填充容器，无变形，匹配目标显示效果 */
-    -webkit-tap-highlight-color: transparent;
-    pointer-events: auto;
-    touch-action: manipulation;
-    user-select: none;
-    display: block;
-}
+            position: absolute;
+            width: 0.6rem;    
+            height: 0.6rem;   
+            cursor: pointer;
+            z-index: 10; /* 你的原始修改值 */
+            background: url("../../images/jia.png") no-repeat center center !important;
+            background-size: 100% 100% !important; 
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
+            display: block;
+        }
+        /* 完全保留你的按钮定位 */
         .bd .j1{right:0.7rem;top:6.4rem}
         .bd .j2{right:0.7rem;top:8.5rem}
         .bd .j3{right:0.7rem;top:10.65rem}
@@ -83,7 +83,7 @@
         .my-gallery .img-dv a {display:block;width:100%;text-align: center}
         .my-gallery .img-dv a img {width:100%;}
 
-        /* 闪烁动画 */
+        /* 闪烁动画 - 保留你的原始样式 */
         .blinking-icon {
             animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
@@ -105,28 +105,28 @@
             text-align: center;
             font-weight: 400;
         }
-        /* 弹窗层级样式（已正确，无需修改） */
+        /* 保留你的弹窗层级样式 */
         .image-modal-overlay,
-.modal-overlay,
-.img-modal-mask,
-.image-modal-mask {
-    z-index: 999999 !important;
-}
-.image-modal-content,
-.modal-content,
-.image-modal-box,
-.modal-box {
-    z-index: 9999999 !important;
-}
-.image-modal-close,
-.modal-close,
-.img-close,
-.close-btn {
-    z-index: 99999999 !important;
-}
+        .modal-overlay,
+        .img-modal-mask,
+        .image-modal-mask {
+            z-index: 999999 !important;
+        }
+        .image-modal-content,
+        .modal-content,
+        .image-modal-box,
+        .modal-box {
+            z-index: 9999999 !important;
+        }
+        .image-modal-close,
+        .modal-close,
+        .img-close,
+        .close-btn {
+            z-index: 99999999 !important;
+        }
 
-       /* 返回按钮样式（已正确，无需修改） */
-       .back-btn {
+        /* 保留你的返回按钮样式 */
+        .back-btn {
             position: fixed;
             bottom: 0.5rem;
             right: 0.3rem;
@@ -151,64 +151,124 @@
             margin: 0 !important;
             padding: 0 !important;
         }
+
+        /* 新增：原生弹窗样式（关闭按钮尺寸0.3rem，图片内部右上角） */
+        #custom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #custom-modal .img-wrap {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        #custom-modal .img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* 核心：关闭按钮尺寸0.3rem，图片内部右上角 */
+        #custom-modal .close-btn {
+            position: absolute;
+            top: 0.2rem;      /* 图片内上边距 */
+            right: 0.2rem;    /* 图片内右边距 */
+            width: 0.3rem;    /* 按要求改为0.3rem */
+            height: 0.3rem;   /* 按要求改为0.3rem */
+            background: url("../../images/close.png") no-repeat center center !important;
+            background-size: 100% 100% !important;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            color: transparent;
+            z-index: 100000000;
+        }
     </style>
     <script src="../../js/jquery-2.1.0.js"></script>
     <script src="../../js/public.js?id=1"></script>
     <script src="../../js/toast.js"></script>
-    <script src="../../js/image-modal.js?id=2"></script>
+    <!-- 注释掉有bug的ImageModal插件 -->
+    <!-- <script src="../../js/image-modal.js?id=2"></script> -->
     <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
 </head>
 <body>
  <div class="bd" id="box">
     <img src="images/2.png" alt="">
-    <!-- 可点击区域 -  -->
+    <!-- 保留你所有可点击区域 -->
     <div class="click-area j1 blinking-icon" data-src="images/jia1.png"></div>
     <div class="click-area j2 blinking-icon" data-src="images/jia2.png"></div>
     <div class="click-area j3 blinking-icon" data-src="images/jia3.png"></div>
  
-    <!-- 返回按钮  -->
+    <!-- 保留你的返回按钮 -->
     <div class="back-btn" id="backBtn">
-        <!-- <span class="back-text">返回<br>疾病</span> -->
         <img src="../../images/back.png" alt="">
     </div>
 
-
+    <!-- 新增：原生弹窗DOM（关闭按钮0.3rem） -->
+    <div id="custom-modal">
+        <div class="img-wrap">
+            <div class="close-btn"></div>
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
 
 <script>
-    // 全局配置
+    // 保留你的全局配置
     const enableSwipeDownJump = true;  
     const enableSwipeUpJump = true;    
 
-    // 图片弹窗初始化 - 
-    const modal = new ImageModal({
-    backdropBlur: false,
-    closeOnEscape: false,
-    backdropOpacity: 0.5
-    // 已删除：onBeforeOpen/onAfterClose 屏蔽点击的代码
-    });
-    // 可点击区域事件
-    $('.click-area').on('click touchstart', function(e) {
-    // 阻止事件冒泡/穿透，避免干扰其他功能
-    e.preventDefault();
-    e.stopPropagation();
-    // 仅保留弹窗图片路径获取
-    const popImgSrc = $(this).data('src'); 
-    
-    
-    if (popImgSrc) {
-        // 验证图片路径是否有效（控制台会提示404）
-        const checkImg = new Image();
-        checkImg.src = popImgSrc;
-        checkImg.onerror = () => console.error('弹窗图片路径错误：', popImgSrc);
-        // 调用modal打开弹窗
-        modal.open(popImgSrc);
-        return;
-    }
-});
+    $(document).ready(function() {
+        var $modal = $('#custom-modal');
+        var $modalImg = $('#modal-img');
+        var $closeBtn = $('.close-btn');
 
-    // 返回按钮事件 - 
-    $('#backBtn').click(function() {
-        window.location.href = "../page1/index.html";
+        // 修复j1-j3点击：无冲突、不自动关闭
+        $('.click-area').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const popImgSrc = $(this).data('src'); 
+            if (popImgSrc) {
+                // 保留你的图片路径验证逻辑
+                const checkImg = new Image();
+                checkImg.src = popImgSrc;
+                checkImg.onerror = () => console.error('弹窗图片路径错误：', popImgSrc);
+                // 显示原生弹窗
+                $modalImg.attr('src', popImgSrc);
+                $modal.css('display', 'flex');
+            }
+        });
+
+        // 关闭按钮（0.3rem）：点击关闭弹窗
+        $closeBtn.on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $modal.css('display', 'none');
+            $modalImg.attr('src', '');
+        });
+
+        // 点击遮罩层关闭弹窗
+        $modal.on('touchstart', function(e) {
+            if (e.target === this) {
+                $modal.css('display', 'none');
+                $modalImg.attr('src', '');
+            }
+        });
+
+        // 保留你的返回按钮逻辑
+        $('#backBtn').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = "../page1/index.html";
+        });
     });
 </script>
 
