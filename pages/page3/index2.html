@@ -50,6 +50,8 @@
             height: 100%;
             position: relative; /* 所有子元素的定位基准 */
             font-size: 0;
+            /* 新增：确保容器不超出可视区，子元素定位基于图片可视范围 */
+            overflow: hidden;
         }
         /* 背景图保持原有显示逻辑 */
         #box img.bg-main {
@@ -59,7 +61,7 @@
             display: block;
         }
 
-        /* 核心：j1-j4 基于 #box 定位（绝对定位），保留你原来的rem数值 */
+        /* 核心：j1-j4 基于 #box 定位，调整坐标适配所有屏幕（解决只显示一个的问题） */
         .click-area {
             position: absolute;
             width: 0.6rem;
@@ -75,19 +77,19 @@
             /* 保留闪烁动画 */
             animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
-        /* 恢复你原来的rem定位数值（确保位置准确） */
-        .j1 {right: 0.7rem; top: 5.9rem;}
-        .j2 {right: 4.1rem; top: 8.5rem;}
-        .j3 {right: 0.7rem; top: 8.5rem;}
-        .j4 {right: 3.3rem; top: 11.5rem;}
+        /* 关键修改：调整j1-j4坐标，适配750设计稿，确保所有j都显示在可视区 */
+       .j1 { right: 9%; top: 42.5%; }
+       .j2 { right: 55%; top: 62%; }
+       .j3 { right: 9%; top: 62%; }
+       .j4 { right: 45%; top: 83%; }
 
-        /* 核心：返回按钮基于 #box 定位，恢复你原来的rem数值+闪烁 */
+        /* 核心修改：返回按钮缩小尺寸+调整位置，避免超出页面 */
         .back-btn {
             position: absolute; /* 不再是fixed，基于背景图容器 */
-            bottom: 0.5rem;
-            right: 0.3rem;
-            width: 1.2rem;
-            height: 1.2rem;
+            bottom: 3%;         /* 替换原0.5rem → 百分比适配 */
+            right: 3%;          /* 替换原0.3rem → 百分比适配 */
+            width: 0.8rem;      /* 缩小：从1.2rem改0.8rem，避免超出 */
+            height: 0.8rem;     /* 缩小：从1.2rem改0.8rem，比例一致 */
             background: none !important;
             border-radius: 0 !important;
             box-shadow: none !important;
@@ -188,13 +190,13 @@
         <!-- 背景图 -->
         <img src="images/2.png?id=1" class="bg-main" alt="">
         
-        <!-- j1-j4：基于#box定位，保留你原来的位置 -->
+        <!-- j1-j4：基于#box定位，调整后全部显示 -->
         <div class="click-area j1" data-src="images/jia1.png"></div>
         <div class="click-area j2" data-src="images/jia2.png"></div>
         <div class="click-area j3" data-src="images/jia3.png"></div>
         <div class="click-area j4" data-src="images/jia4.png"></div>
 
-        <!-- 返回按钮：基于#box定位，位置和你原来一致 -->
+        <!-- 返回按钮：缩小尺寸+调整位置，不超出页面 -->
         <div class="back-btn" id="backBtn">
             <span class="back-text">返回<br>疾病</span>
             <img src="../../images/back.png" alt="返回">
