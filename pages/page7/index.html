@@ -84,7 +84,7 @@
             bottom: 0rem;
             opacity: 0.8;
         }
-        /* 核心修改：主盒子铺满屏幕 */
+        /* 核心修改：主盒子铺满屏幕，作为子元素定位基准 */
         #box{
             position: relative;
             font-size: 0px;
@@ -106,14 +106,16 @@
             touch-action: manipulation;
             user-select: none;
             display: block;
+            /* 统一闪烁动画，移除冗余的blinking-icon类依赖 */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
-        /* 完全保留你的按钮定位 */
-        .bd .j1{right:0.6rem;top:5.8rem}
-        .bd .j2{right:0.6rem;top:8.3rem}
-        .bd .j3{right:0.6rem;top:10.9rem}
+        /* 关键修改：j1-j3 改为基于1.png的百分比定位（替换原rem） */
+        .bd .j1{right: 9%; top: 42%;}   /* 替换原0.6rem/5.8rem */
+        .bd .j2{right: 9%; top: 60%;}   /* 替换原0.6rem/8.3rem */
+        .bd .j3{right: 9%; top: 79%;}   /* 替换原0.6rem/10.9rem */
 
-        .pull-left{height: 7rem;position: absolute;right:0.8rem;top:4rem}
-        .my-gallery {width:10%;margin: 0 auto;opacity:0;position: absolute;top:4rem;right:0.8rem}
+        .pull-left{height: 7rem;position: absolute;right:0.8rem;top:4rem; display: none;}
+        .my-gallery {width:10%;margin: 0 auto;opacity:0;position: absolute;top:4rem;right:0.8rem; display: none;}
         .my-gallery .img-dv {width:100%;margin-bottom: 1%;}
         .my-gallery .img-dv a {display:block;width:100%;text-align: center}
         .my-gallery .img-dv a img {width:100%;}
@@ -168,11 +170,11 @@
             cursor: pointer !important;
         }
 
-        /* 完全保留你的返回按钮样式 */
+        /* 核心修改：返回按钮添加闪烁动画 + 百分比定位优化 */
         .back-btn {
-            position: fixed; 
-            bottom: 0.5rem;  
-            right: 0.3rem;   
+            position: absolute; /* 改为absolute，基于#box定位 */
+            bottom: 5%;         /* 替换原0.5rem → 百分比适配 */
+            right: 5%;          /* 替换原0.3rem → 百分比适配 */
             width: 0.8rem;   
             height: 0.8rem;
             background: none !important; 
@@ -181,6 +183,8 @@
             z-index: 9997;
             cursor: pointer;
             display: block !important;
+            /* 新增：返回按钮闪烁动画（和j1-j3一致） */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
         }
         .back-btn .back-text {
             display: none !important;
@@ -245,25 +249,28 @@
     <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
 </head>
 <body>
- <div class="bd" id="box">
-    <img src="images/1.png" alt="">
-    <!-- 保留所有可点击区域 -->
-    <div class="click-area j1 blinking-icon" data-src="images/jia1.png"></div>
-    <div class="click-area j2 blinking-icon" data-src="images/jia2.png"></div>
-    <div class="click-area j3 blinking-icon" data-src="images/jia3.png"></div>
- 
-    <!-- 保留你的返回按钮 -->
-    <div class="back-btn" id="backBtn">
-        <img src="../../images/back.png" alt="">
-    </div>
+ <div class="bd">
+    <div id="box">
+        <img src="images/1.png" alt="" class="bg-main">
+        <!-- 保留所有可点击区域，移除冗余的blinking-icon类（已统一加动画） -->
+        <div class="click-area j1" data-src="images/jia1.png"></div>
+        <div class="click-area j2" data-src="images/jia2.png"></div>
+        <div class="click-area j3" data-src="images/jia3.png"></div>
+     
+        <!-- 保留你的返回按钮 -->
+        <div class="back-btn" id="backBtn">
+            <img src="../../images/back.png" alt="">
+        </div>
 
-    <!-- 新增：原生弹窗DOM -->
-    <div id="custom-modal">
-        <div class="img-wrap">
-            <div class="close-btn"></div>
-            <img id="modal-img" src="" alt="">
+        <!-- 新增：原生弹窗DOM -->
+        <div id="custom-modal">
+            <div class="img-wrap">
+                <div class="close-btn"></div>
+                <img id="modal-img" src="" alt="">
+            </div>
         </div>
     </div>
+ </div>
 
 <script>
     // 页面加载后强制滚动到顶部，确保初始显示完整
