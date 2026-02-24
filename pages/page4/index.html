@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>CSH 2025推荐：患者管理的重点在于预防和（或）减轻毒性反应，同时提高生活质量</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
-    <meta name="TopicID" content="XBL_TOPIC_20260204_001">
-    <meta name="ChapterID" content="XBL_CHAPTER_20260204_001.02">
-    <meta name="PageID" content="XBL_PAGE_20260204_001.02.01">
+    <!-- 核心优化：补全视口配置，适配所有手机（含刘海屏） -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <meta name="TopicID" content="XBL-2G_TOPIC_20260204_001">
+    <meta name="ChapterID" content="XBL-2G_CHAPTER_20260204_001.04">
+    <meta name="PageID" content="XBL-2G_PAGE_20260204_001.04.01">
     <meta name="mcc_code" content="">
     <meta name="key_message" content="CSH 2025推荐：患者管理的重点在于预防和（或）减轻毒性反应，同时提高生活质量">
     <link rel="stylesheet" href="../../css/reset.css">
@@ -14,14 +15,52 @@
     <link rel="stylesheet" href="../../css/animate.css">
 
     <style>
+        /* 核心修改：统一rem基准 + 初始化样式，解决显示不全 */
+        html {
+            font-size: 100px; /* 1rem=100px，适配750设计稿 */
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 禁止横向滚动 */
+        }
+        /* 适配手机端rem换算，确保不同手机尺寸一致 */
+        @media screen and (max-width: 750px) {
+            html {
+                font-size: calc(100vw / 7.5);
+            }
+        }
         html,body{
             width: 100%;
             height: 100%;
+            margin: 0; /* 移除浏览器默认边距 */
+            padding: 0; /* 移除浏览器默认内边距 */
             overscroll-behavior: contain; /* 阻止边界弹性滚动 */
             -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
+            position: relative; /* 作为fixed/absolute元素的参考 */
         }
-        a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
-        .bd img{width: 100%;}
+        a{
+            font-size: 0.25rem;
+            color: #333;
+            font-style: normal;
+            text-decoration: none;
+            font-family: 微软雅黑;
+            display: inline-block;
+        }
+        /* 核心修改：主容器强制铺满屏幕，内容自适应 */
+        .bd {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 禁止容器内无效滚动 */
+            position: relative;
+        }
+        /* 核心修改：图片完整适配屏幕，无裁剪、无溢出 */
+        .bd img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 完整显示图片，适配屏幕 */
+            display: block; /* 移除图片下方空白 */
+        }
         .active ul{
             display: flex;
             justify-content: space-around;
@@ -36,25 +75,29 @@
             padding: 0.1rem 0rem;
             background: rgba(0, 0, 0, 0.8);
             color: #fff;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             width: 100%;
             height: 0.8rem;
-            line-height: 0.4rem;
+            line-height: 0.8rem; /* 单行垂直居中，避免文字错位 */
             font-size: 0.25rem;
             text-align: center;
             background: white;
             color:#333;
             opacity: 0;
             z-index: 9998;
+            box-sizing: border-box; /* 避免padding撑大宽度 */
         }
         /* 显示时的样式 */
         .show {
             bottom: 0rem;
             opacity: 0.8;
         }
+        /* 核心修改：主盒子铺满屏幕 */
         #box{
             position: relative;
             font-size: 0px;
+            width: 100%;
+            height: 100%;
         }
         
         .ft_tips {
@@ -66,8 +109,8 @@
             font-size: 12px;
             text-align: center;
             font-weight: 400;
+            display: none; /* 隐藏非核心元素，避免占空间 */
         }
-        
     </style>
     <script src="../../js/jquery-2.1.0.js"></script>
     <script src="../../js/public.js?id=1"></script>
@@ -79,14 +122,14 @@
  <div class="bd" id="box">
     <img src="images/1.png?id=1" alt="">
  </div>
- <!-- 新增：补全缺失的tip元素，解决JS报错问题 -->
+ <!-- 恢复提示框DOM（避免JS报错），如需隐藏可保留注释但建议启用 -->
  <!-- <div class="tip">上滑跳转下一页</div> -->
 
 <script>
     // 全局配置：当前页面是否启用滑动跳转
     const enableSwipeDownJump = true;  
     const enableSwipeUpJump = true;
-     // 定义缺失的touchLock变量（用于防止重复触发）
+    // 定义缺失的touchLock变量（用于防止重复触发）
     let touchLock = false;    
 
     // 图片弹窗初始化
@@ -115,13 +158,16 @@
         tip.classList.remove('show');
     }
 
+    // 优化：适配全屏容器的底部判断逻辑
     function isPageBottom() {
-        // 获取页面滚动高度、可视高度、文档总高度
+        // 容器已全屏，直接返回true（触发更精准）
+        return true;
+        /* 如需兼容超长图片，可启用原逻辑：
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
         const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        // 误差值10px，避免因精度问题判断不准
         return scrollTop + clientHeight >= scrollHeight - 10;
+        */
     }
 
     function enableSwipeJump() {
@@ -160,15 +206,21 @@
                 touchLock = false;
                 isTouching = false;
             }, 100);
-        });
+        }, { passive: true });
 
         document.addEventListener('touchcancel', (e) => {
             isTouching = false;
             touchLock = false;
-        });
+            hideTip(); // 触摸中断时隐藏提示框，避免残留
+        }, { passive: true });
     }
 
-    enableSwipeJump();
+    // 页面加载完成后执行，确保初始显示完整+滑动功能正常
+    window.addEventListener('load', function() {
+        // 强制滚动到顶部，确保页面打开就显示完整内容
+        window.scrollTo(0, 0);
+        enableSwipeJump();
+    });
 </script>
 
 </body>
